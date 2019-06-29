@@ -1,0 +1,19 @@
+{
+  "name": "industrybuddybackend",
+  "version": "1.0.0",
+  "description": "Node backend for Industry Buddy",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Reikerseiffe/IndustryBuddyBackend.git"
+  },
+  "author": "Reiker Seiffe",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Reikerseiffe/IndustryBuddyBackend/issues"
+  },
+  "homepage": "https://github.com/Reikerseiffe/IndustryBuddyBackend#readme"
+}
