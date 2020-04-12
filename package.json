@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/Reikerseiffe/IndustryBuddyBackend/issues"
   },
-  "homepage": "https://github.com/Reikerseiffe/IndustryBuddyBackend#readme"
+  "homepage": "https://github.com/Reikerseiffe/IndustryBuddyBackend#readme",
+  "dependencies": {
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "mysql": "^2.17.1"
+  }
 }
