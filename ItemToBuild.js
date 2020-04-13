@@ -23,10 +23,10 @@ module.exports = class ItemToBuild{
     }
 
     //Get the raw list of materials from the DB
-    getMaterialsForItemName(){
+    getMaterialsForItemName(typeName){
         return new Promise(resolve =>{
             let sql  = fs.readFileSync('queries/CalculateReactionInputsFromTypeName.sql').toString()
-            DB.query(sql, this.typeName, function(error, results, fields){
+            DB.query(sql, typeName, function(error, results, fields){
                 resolve(results)
             })
         })
@@ -90,10 +90,23 @@ module.exports = class ItemToBuild{
         })
     }
 
+    getSubmaterialForComponent(item){
+        return new Promise(resolve => {
+            this.getMaterialsForItemName(item.typeName).then(result =>{
+                console.log(this.cleanUp(result))
+                resolve(item.inputs = this.cleanUp(result))
+            })
+        })
+    } 
 
-    async calculateInputs(){
+    async getComponentSubMaterials(arrayOfItems){
+        return Promise.all(arrayOfItems.map(item => this.getSubmaterialForComponent(item)))
+    }
+
+
+    async calculateBaseInputs(){
         //Get Raw materials
-        let materials = await this.getMaterialsForItemName()
+        let materials = await this.getMaterialsForItemName(this.typeName)
         //convert to useable format
         materials = this.cleanUp(materials)
 
