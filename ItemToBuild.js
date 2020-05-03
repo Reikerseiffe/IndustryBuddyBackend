@@ -25,7 +25,7 @@ module.exports = class ItemToBuild{
     // This was to get all subcomponents before handling each one by itself
     getSubmaterialsForItem(item){
         return new Promise(resolve => {
-            Common.getMaterialsForItemName(item.typeName, item.groupID).then(result =>{
+            Common.getMaterialsForItemName(item).then(result =>{
                 // console.log(Common.cleanUpDBQuery(result))
                 //Result is all the inputs for the item passed in
 

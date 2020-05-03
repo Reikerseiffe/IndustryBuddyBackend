@@ -18,13 +18,13 @@ module.exports = class Common{
     }
 
     //Get the raw list of materials from the DB
-    static getMaterialsForItemName(typeName,groupID){
+    static getMaterialsForItemName(item){
         return new Promise(resolve =>{
             let sql = ""
-            console.log(typeName + ": " + groupID)
+            console.log(item.typeName + ": " + item.groupID)
 
             //Reacted components
-            switch (groupID){
+            switch (item.groupID){
                 case 428: //Intermediate Materials
                 case 429: //Composite
                     sql  = fs.readFileSync('queries/CalculateReactionInputs.sql').toString()
@@ -35,12 +35,12 @@ module.exports = class Common{
                     resolve([])
 
                 default://All else that doesnt need a drill down
-                    sql  = fs.readFileSync('queries/CalculateInputsFromTypeName.sql').toString()
+                    sql  = fs.readFileSync('queries/CalculateInputsFromTypeID.sql').toString()
                     break
 
             }
             
-            DB.query(sql, typeName, function(error, results, fields){
+            DB.query(sql, item.typeID, function(error, results, fields){
                 if (error){
                     console.log(error)
                     console.log("ITEM: " + typeName)
