@@ -1,4 +1,4 @@
-SELECT industryActivityMaterials.typeID, industryActivityMaterials.activityID, industryActivityMaterials.materialTypeID, industryActivityMaterials.quantity, invTypes.typeName, invTypes.groupID, invGroups.groupName
+SELECT industryActivityMaterials.typeID AS parentTypeID, industryActivityMaterials.activityID, industryActivityMaterials.materialTypeID as typeID, industryActivityMaterials.quantity, invTypes.typeName, invTypes.groupID, invGroups.groupName
 FROM EVE_SDE.industryActivityMaterials 
 join invTypes on industryActivityMaterials.materialTypeID = invTypes.typeID join invGroups on invTypes.groupID = invGroups.groupID
 where industryActivityMaterials.typeID = (

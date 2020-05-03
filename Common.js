@@ -46,7 +46,8 @@ module.exports = class Common{
                     console.log("ITEM: " + typeName)
                     resolve([])
                 }
-                resolve(Common.cleanUpDBQuery(results))
+
+                resolve(results)
             })
         })
     }
